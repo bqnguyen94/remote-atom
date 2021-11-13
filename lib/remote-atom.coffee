@@ -96,7 +96,8 @@ class Session
         @should_parse_data = false
         @nconn = 0
         @socket = socket
-        @send "Atom "+ atom.getVersion()
+        # Fix malformed http status error by kubectl
+#         @send "Atom "+ atom.getVersion()
         @alive = true
         socket.on "data", (chunk) =>
             @parse_chunk(chunk)
